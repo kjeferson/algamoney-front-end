@@ -1,0 +1,43 @@
+.navbar {
+  padding: 10px 0px;
+  background-color: #1e94d2;
+}
+
+.navbar-toggle{
+  color: #fff;
+}
+
+.navbar-menu {
+  position: fixed; /*fixa o elemento e flutua conforme scroll*/
+  top: 0; /*colado no topo*/
+  bottom: 0;/*colado na parte de baixo*/
+  right: 0;/*colado a direita*/
+  width: 210px;/*definição da largura*/
+  margin: 0;/*removendo a margem*/
+  padding: 0;/*remove padding*/
+  z-index: 9998;/*definindo um numero alto para que seja prioridade este componente ficar por cima dos outros*/
+  background-color: #3a3633;
+  list-style: none;/*remove as bolinhas do menu*/
+}
+
+.navbar-usuario {
+  padding: 15px;/*espaçamento interno*/
+  margin-bottom: 15px;
+  border-bottom: 1px solid #525151;
+  text-transform: uppercase;/*tudo para uppercase*/
+  font-weight: bold;
+  color: #fff;
+}
+
+.navbar-menuitem {
+  padding: 15px;
+}
+
+.navbar-menuitem a {
+ color:#c0bbb7;
+ text-decoration: none;
+}
+
+.navbar-menuitem a:hover {
+  color:#fff;
+ }
