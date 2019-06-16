@@ -8,11 +8,16 @@
 
       <div class="ui-g-6 ui-md-3 ui-fluid">
         <label>Vencimento</label>
-        <input pInputText type="text">
+        <!--[inline]="true" não mostra em pop-up, default é [inline]="false" que mostra o popup ao clicar-->
+        <!--[readonlyInput]="true" não permite digitar a data, default é [readonlyInput]="false" que permite digitar uma data no campo-->
+        <!--[showIcon]="false" default para não mostrar icone do calendário,  [showIcon]="true" mostra o ícone-->
+        <p-calendar dateFormat="dd/mm/yy"
+          [inline]="false" [readonlyInput]="false"
+          [showIcon]="false"></p-calendar>
       </div>
       <div class="ui-g-6 ui-md-3 ui-fluid">
         <label>Recebimento</label>
-        <input pInputText type="text">
+        <p-calendar dateFormat="dd/mm/yy"></p-calendar>
       </div>
       <div class="ui-g-12 ui-md-9 ui-fluid">
         <label>Descrição</label>
