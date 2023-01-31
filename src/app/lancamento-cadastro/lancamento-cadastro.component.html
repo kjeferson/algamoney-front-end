@@ -6,6 +6,10 @@
         <h1>Novo Lançamento</h1>
       </div>
 
+      <div class="ui-g-12">
+        <p-selectButton [options]="tipos" #tipo></p-selectButton>
+      </div>
+
       <div class="ui-g-6 ui-md-3 ui-fluid">
         <label>Vencimento</label>
         <!--[inline]="true" não mostra em pop-up, default é [inline]="false" que mostra o popup ao clicar-->
@@ -16,7 +20,8 @@
           [showIcon]="false"></p-calendar>
       </div>
       <div class="ui-g-6 ui-md-3 ui-fluid">
-        <label>Recebimento</label>
+        <!--Recebendo valor do selectButton #tipo-->
+        <label>{{ tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento'}}</label>
         <p-calendar dateFormat="dd/mm/yy"></p-calendar>
       </div>
       <div class="ui-g-12 ui-md-9 ui-fluid">
