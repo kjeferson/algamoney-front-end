@@ -1,44 +1,93 @@
 /* You can add global styles to this file, and also import other style files */
-body{
-  margin:0;
+body {
+  margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   color: #404C51;
 }
 
-a {
-  color: #337ab7;
-  text-decoration: none;
-}
-
-a:hover, a:focus {
-  text-decoration: underline;
-}
-label{
+label {
   font-weight: bold;
 }
 
-/*Aplicar Css somente quando a largura do navegador tiver no mínimo 1200px*/
 @media (min-width: 1200px) {
-/*width: Delimita o tamanho máximo para telas com maiores resolução
-margin: o 0 delimita margem de 0 em cima e embaixo, "auto" o navegador cálculo o espaçamento entre esquerda e direita centralizando */
-  .container{
-    width: 1170px;
-    margin: 0 auto
+  .container {
+      width: 1170px;
+      margin: 0 auto;
   }
 }
-/*formatação da coluna valor do datatable*/
-.col-valor {
-  width: 120px;
-  text-align: right;
+
+.label {
+  margin: 0.5em;
 }
-/*formatação da coluna data do datatable*/
-.col-data {
+
+.col-valor-header {
+  width: 120px;
+  text-align: center !important;
+}
+
+.col-valor-content {
+  text-align: right !important ;
+}
+
+.col-data-header {
+  width: 120px;
+}
+
+.col-data-content {
+  text-align: center !important;
+}
+
+.col-acoes {
   width: 120px;
   text-align: center;
 }
 
-/*formatação da coluna de ações do datatable*/
-.col-acoes {
-  width: 90px;
-  text-align: center;
+.col-acoes > a {
+  margin-right: 5px;
+}
+
+.p-button {
+margin-right: 0.25em !important;
+}
+
+@media (min-width: 40em) {
+  .col-valor-header {
+    width: 120px;
+  }
+
+  .col-valor {
+    text-align: right !important;
+  }
+
+  .col-data-header {
+    width: 120px;
+  }
+
+  .col-data {
+    text-align: center !important;
+  }
+
+  .col-acoes-header {
+    width: 115px;
+  }
+
+  .col-acoes {
+    width: 115px;
+    text-align: center !important;
+  }
+
+}
+
+a {
+color: #337ab7;
+text-decoration: none;
+}
+
+a:hover, a:focus {
+text-decoration: underline;
+}
+
+a.p-button:hover,
+a.p-button:focus {
+text-decoration: none;
 }

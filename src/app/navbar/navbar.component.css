@@ -1,30 +1,33 @@
 .navbar {
-  padding: 10px 0px;
+  padding: 20px 0 10px;
   background-color: #1e94d2;
 }
 
-.navbar-toggle{
+.navbar-toggle {
   color: #fff;
 }
 
 .navbar-menu {
-  position: fixed; /*fixa o elemento e flutua conforme scroll*/
-  top: 0; /*colado no topo*/
-  bottom: 0;/*colado na parte de baixo*/
-  right: 0;/*colado a direita*/
-  width: 210px;/*definição da largura*/
-  margin: 0;/*removendo a margem*/
-  padding: 0;/*remove padding*/
-  z-index: 9998;/*definindo um numero alto para que seja prioridade este componente ficar por cima dos outros*/
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 210px;
+  margin: 0;
+  padding: 0;
+  z-index: 9998;
+
   background-color: #3a3633;
-  list-style: none;/*remove as bolinhas do menu*/
+
+  list-style: none;
 }
 
 .navbar-usuario {
-  padding: 15px;/*espaçamento interno*/
+  padding: 15px;
   margin-bottom: 15px;
   border-bottom: 1px solid #525151;
-  text-transform: uppercase;/*tudo para uppercase*/
+
+  text-transform: uppercase;
   font-weight: bold;
   color: #fff;
 }
@@ -34,10 +37,10 @@
 }
 
 .navbar-menuitem a {
- color:#c0bbb7;
- text-decoration: none;
+  color: #c0bbb7;
+  text-decoration: none;
 }
 
 .navbar-menuitem a:hover {
-  color:#fff;
- }
+  color: #fff;
+}

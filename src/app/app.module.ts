@@ -1,18 +1,21 @@
-import { SelectButtonModule } from 'primeng/components/selectbutton/selectbutton';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CalendarModule } from 'primeng/components/calendar/calendar';
-import { InputTextareaModule } from 'primeng/components/inputtextarea/inputtextarea';
-import { TooltipModule } from 'primeng/components/tooltip/tooltip';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { InputTextModule } from 'primeng/inputtext';
+import { CalendarModule } from 'primeng/calendar';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
+import { TabViewModule } from 'primeng/tabview';
+import { TooltipModule } from 'primeng/tooltip';
+
 import { AppComponent } from './app.component';
-import {InputTextModule} from 'primeng/components/inputtext/inputtext';
-import {ButtonModule} from 'primeng/components/button/button';
-import { DataTableModule } from 'primeng/components/datatable/datatable';
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
 import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
+import { SelectButtonModule } from 'primeng/selectbutton';
 
 @NgModule({
   declarations: [
@@ -26,11 +29,12 @@ import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-ca
     BrowserModule,
     BrowserAnimationsModule,
     InputTextModule,
-    ButtonModule,
-    DataTableModule,
-    TooltipModule,
     InputTextareaModule,
+    ButtonModule,
     CalendarModule,
+    TableModule,
+    TabViewModule,
+    TooltipModule,
     SelectButtonModule
   ],
   providers: [],
