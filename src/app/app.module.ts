@@ -17,6 +17,7 @@ import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.co
 import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { DropdownModule } from 'primeng/dropdown';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { DropdownModule } from 'primeng/dropdown';
     TabViewModule,
     TooltipModule,
     SelectButtonModule,
-    DropdownModule
+    DropdownModule,
+    InputNumberModule
   ],
   providers: [],
   bootstrap: [AppComponent]
