@@ -29,9 +29,9 @@ export class PessoaService {
       params = params.set('nome', filtro.nome);
     }
 
-    return this.http.get(`${this.pessoasUrl}`, { headers, params })
-      .toPromise()
-      .then((response: any) => {
+    return firstValueFrom(
+      this.http.get(`${this.pessoasUrl}`, { headers, params })
+    ).then((response: any) => {
         const pessoas = response['content'];
 
         const resultado = {
@@ -47,8 +47,16 @@ export class PessoaService {
     const headers = new HttpHeaders()
       .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
 
-    return firstValueFrom(this.http.get(this.pessoasUrl, { headers })
-      ).then((response: any) => response['content']);
+    return firstValueFrom(
+      this.http.get(this.pessoasUrl, { headers })
+    ).then((response: any) => response['content']);
+  }
+
+  excluir(codigo: number): Promise<void> {
+    const headers = new HttpHeaders()
+      .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+
+    return firstValueFrom(this.http.delete<void>(`${this.pessoasUrl}/${codigo}`, { headers }));
   }
 
 }
