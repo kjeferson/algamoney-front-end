@@ -1,3 +1,4 @@
+import { firstValueFrom } from 'rxjs';
 import { DatePipe } from '@angular/common';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -41,9 +42,9 @@ export class LancamentoService {
       params = params.set('dataVencimentoAte', this.datePipe.transform(filtro.dataVencimentoFim, 'yyyy-MM-dd')!);
     }
 
-    return this.http.get(`${this.lancamentosUrl}?resumo`, { headers, params })
-      .toPromise()
-      .then((response: any) => {
+    return firstValueFrom(
+      this.http.get(`${this.lancamentosUrl}?resumo`, { headers, params })
+    ).then((response: any) => {
         const lancamentos = response['content'];
 
         const resultado = {
@@ -59,8 +60,9 @@ export class LancamentoService {
     const headers = new HttpHeaders()
       .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
 
-    return this.http.delete<void>(`${this.lancamentosUrl}/${codigo}`, { headers })
-      .toPromise();
+    return firstValueFrom(
+      this.http.delete<void>(`${this.lancamentosUrl}/${codigo}1234`, { headers })
+    );
   }
 
 }
