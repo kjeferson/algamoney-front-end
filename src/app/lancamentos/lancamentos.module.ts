@@ -12,26 +12,30 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
-import { SharedModule } from '../shared/shared.module';
 
+import { RouterModule } from '@angular/router';
+
+import { SharedModule } from '../shared/shared.module';
 import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
-
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     HttpClientModule,
+    RouterModule,
+
+    InputNumberModule,
     InputTextModule,
     ButtonModule,
     TableModule,
     TooltipModule,
-    InputNumberModule,
     InputTextareaModule,
     CalendarModule,
     SelectButtonModule,
     DropdownModule,
+
     SharedModule
   ],
   declarations: [
