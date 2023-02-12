@@ -1,3 +1,4 @@
+import { LancamentosRoutingModule } from './lancamentos-routing.module';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -24,7 +25,6 @@ import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos
     CommonModule,
     FormsModule,
     HttpClientModule,
-    RouterModule,
 
     InputNumberModule,
     InputTextModule,
@@ -36,7 +36,8 @@ import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos
     SelectButtonModule,
     DropdownModule,
 
-    SharedModule
+    SharedModule,
+    LancamentosRoutingModule
   ],
   declarations: [
     LancamentoCadastroComponent,
