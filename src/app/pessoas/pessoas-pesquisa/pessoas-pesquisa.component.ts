@@ -28,7 +28,8 @@ export class PessoasPesquisaComponent {
       .then((dados: any) => {
         this.pessoas = dados.pessoas;
         this.totalRegistros = dados.total;
-      });
+      })
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   aoMudarPagina(event: LazyLoadEvent) {
