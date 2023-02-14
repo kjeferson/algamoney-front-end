@@ -30,7 +30,8 @@ export class PessoaService {
       params = params.set('nome', filtro.nome);
     }
 
-    return firstValueFrom(this.http.get(`${this.pessoasUrl}`, { headers, params }))
+    return this.http.get(`${this.pessoasUrl}`, { headers, params })
+      .toPromise()
       .then((response: any) => {
         const pessoas = response['content'];
 
@@ -47,7 +48,8 @@ export class PessoaService {
     const headers = new HttpHeaders()
       .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
 
-    return firstValueFrom(this.http.get(this.pessoasUrl, { headers }))
+    return this.http.get(this.pessoasUrl, { headers })
+      .toPromise()
       .then((response: any) => response['content']);
   }
 
@@ -63,7 +65,8 @@ export class PessoaService {
       .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==')
       .append('Content-Type', 'application/json');
 
-    return firstValueFrom(this.http.put<void>(`${this.pessoasUrl}/${codigo}/ativo`, ativo, { headers }));
+    return this.http.put<void>(`${this.pessoasUrl}/${codigo}/ativo`, ativo, { headers })
+      .toPromise();
   }
 
   adicionar(pessoa: Pessoa): Promise<Pessoa> {
@@ -72,6 +75,21 @@ export class PessoaService {
       .append('Content-Type', 'application/json');
 
     return firstValueFrom(this.http.post<Pessoa>(this.pessoasUrl, pessoa, { headers }));
+  }
+
+  atualizar(pessoa: Pessoa): Promise<Pessoa> {
+    const headers = new HttpHeaders()
+      .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==')
+      .append('Content-Type', 'application/json');
+
+    return firstValueFrom(this.http.put<Pessoa>(`${this.pessoasUrl}/${pessoa.codigo}`, pessoa, { headers }));
+  }
+
+  buscarPorCodigo(codigo: number): Promise<Pessoa> {
+    const headers = new HttpHeaders()
+      .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+
+    return firstValueFrom(this.http.get<Pessoa>(`${this.pessoasUrl}/${codigo}`, { headers }));
   }
 
 }
