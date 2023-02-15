@@ -1,8 +1,7 @@
 import { firstValueFrom } from 'rxjs';
 import { DatePipe } from '@angular/common';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
 import { Lancamento } from '../core/model';
 
 export class LancamentoFiltro {
@@ -24,13 +23,9 @@ export class LancamentoService {
     private datePipe: DatePipe) { }
 
   pesquisar(filtro: LancamentoFiltro): Promise<any> {
-    const headers = new HttpHeaders()
-      .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
-
     let params = new HttpParams()
       .set('page', filtro.pagina)
       .set('size', filtro.itensPorPagina);
-
 
     if (filtro.descricao) {
       params = params.set('descricao', filtro.descricao);
@@ -44,7 +39,7 @@ export class LancamentoService {
       params = params.set('dataVencimentoAte', this.datePipe.transform(filtro.dataVencimentoFim, 'yyyy-MM-dd')!);
     }
 
-    return firstValueFrom(this.http.get(`${this.lancamentosUrl}?resumo`, { headers, params }))
+    return firstValueFrom(this.http.get(`${this.lancamentosUrl}?resumo`, { params }))
       .then((response: any) => {
         const lancamentos = response['content'];
 
@@ -58,33 +53,24 @@ export class LancamentoService {
   }
 
   excluir(codigo: number): Promise<void> {
-    const headers = new HttpHeaders()
-      .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
-
-    return firstValueFrom(this.http.delete<void>(`${this.lancamentosUrl}/${codigo}`, { headers }));
+    return firstValueFrom(this.http.delete<void>(`${this.lancamentosUrl}/${codigo}`));
   }
 
   adicionar(lancamento: Lancamento): Promise<Lancamento> {
-    const headers = new HttpHeaders()
-      .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==')
-      .append('Content-Type', 'application/json');
-
-    return firstValueFrom(this.http.post<Lancamento>(this.lancamentosUrl, lancamento, { headers }));
+    return firstValueFrom(this.http.post<Lancamento>(this.lancamentosUrl, lancamento));
   }
 
   atualizar(lancamento: Lancamento): Promise<Lancamento> {
-    const headers = new HttpHeaders()
-      .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==')
-      .append('Content-Type', 'application/json');
+    return firstValueFrom(this.http.put<Lancamento>(`${this.lancamentosUrl}/${lancamento.codigo}`, lancamento))
+      .then((response: any) => {
+        this.converterStringsParaDatas([response]);
 
-    return firstValueFrom(this.http.put<Lancamento>(`${this.lancamentosUrl}/${lancamento.codigo}`, lancamento, { headers }));
+        return response;
+      });
   }
 
   buscarPorCodigo(codigo: number): Promise<Lancamento> {
-    const headers = new HttpHeaders()
-      .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
-
-    return firstValueFrom(this.http.get(`${this.lancamentosUrl}/${codigo}`, { headers }))
+    return firstValueFrom(this.http.get(`${this.lancamentosUrl}/${codigo}`))
       .then((response: any) => {
         this.converterStringsParaDatas([response]);
 
@@ -103,5 +89,4 @@ export class LancamentoService {
       }
     }
   }
-
 }
