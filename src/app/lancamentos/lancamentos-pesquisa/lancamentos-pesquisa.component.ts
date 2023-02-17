@@ -1,3 +1,4 @@
+import { AuthService } from './../../seguranca/auth.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
@@ -22,6 +23,7 @@ export class LancamentosPesquisaComponent implements OnInit {
   @ViewChild('tabela') grid!: Table;
 
   constructor(
+    private auth: AuthService,
     private lancamentoService: LancamentoService,
     private errorHandler: ErrorHandlerService,
     private messageService: MessageService,
@@ -70,6 +72,10 @@ export class LancamentosPesquisaComponent implements OnInit {
 
         this.messageService.add({ severity: 'success', detail: 'Lançamento excluído com sucesso!' })
       })
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
+  naoTemPermissao(permissao: string) {
+    return !this.auth.temPermissao(permissao);
+  }
 }
