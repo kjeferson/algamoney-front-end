@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { firstValueFrom } from 'rxjs';
 import { DatePipe } from '@angular/common';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -17,7 +18,7 @@ export class LancamentoFiltro {
 })
 export class LancamentoService {
 
-  lancamentosUrl = 'http://localhost:8080/lancamentos';
+  lancamentosUrl = environment.apiUrl + '/lancamentos';
 
   constructor(private http: HttpClient,
     private datePipe: DatePipe) { }

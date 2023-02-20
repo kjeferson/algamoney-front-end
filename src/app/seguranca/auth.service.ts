@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { firstValueFrom } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -8,8 +9,8 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
-  tokensRevokeUrl = 'http://localhost:8080/tokens/revoke';
-  oauthTokenUrl = 'http://localhost:8080/oauth/token';
+  tokensRevokeUrl = environment.apiUrl + '/tokens/revoke';
+  oauthTokenUrl = environment.apiUrl + '/oauth/token';
   jwtPayload: any;
 
   constructor(

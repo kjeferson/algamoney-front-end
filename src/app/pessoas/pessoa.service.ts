@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { firstValueFrom } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -13,7 +14,7 @@ export class PessoaFiltro {
   providedIn: 'root'
 })
 export class PessoaService {
-  pessoasUrl = 'http://localhost:8080/pessoas';
+  pessoasUrl = environment.apiUrl + '/pessoas';
 
   constructor(private http: HttpClient) { }
 
